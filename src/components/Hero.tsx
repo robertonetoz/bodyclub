@@ -48,7 +48,7 @@ function HeroScroll() {
   const words = manifesto.split(" ");
 
   return (
-    <section ref={ref} id="inicio" className="relative h-[380vh]" aria-label="Body Club">
+    <section ref={ref} id="inicio" className="relative h-[300vh] md:h-[380vh]" aria-label="Body Club">
       <div className="sticky top-0 h-svh overflow-hidden">
         <motion.div style={{ scale: photoScale }} className="absolute inset-0">
           <Photo
@@ -58,6 +58,8 @@ function HeroScroll() {
             priority
             placeholderClassName="items-end justify-start pt-28 md:pr-10"
             className="size-full"
+            imgClassName="object-[25%_center] md:object-center"
+            sizes="(orientation: portrait) 175vh, 130vw"
           />
         </motion.div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ferro via-ferro/50 to-ferro/30" />
@@ -218,6 +220,8 @@ function HeroStatic() {
           priority
           placeholderClassName="items-end justify-start pt-28 md:pr-10"
           className="!absolute inset-0"
+          imgClassName="object-[25%_center] md:object-center"
+          sizes="(orientation: portrait) 135vh, 100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ferro via-ferro/50 to-ferro/30" />
         <div className="relative mx-auto flex min-h-svh max-w-[1400px] flex-col justify-end px-4 pb-20 pt-32 md:px-8">

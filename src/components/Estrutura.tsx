@@ -26,6 +26,7 @@ export function Estrutura() {
                 alt="Sala de musculação da Body Club"
                 label="Foto da estrutura"
                 className="aspect-[4/3] w-full"
+                sizes="(min-width: 1024px) 50vw, 100vw"
               />
             </motion.div>
           </motion.div>

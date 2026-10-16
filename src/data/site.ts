@@ -3,6 +3,8 @@
 
 export const site = {
   name: "Body Club",
+  // Endereço público do site (usado nas prévias de link e no Google)
+  url: "https://bodyclub-smoky.vercel.app",
   tagline: "O seu jeito de treinar",
   bio: "Qualidade de vida, mais perto de você.",
   description:

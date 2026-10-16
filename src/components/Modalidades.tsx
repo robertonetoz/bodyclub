@@ -89,6 +89,7 @@ function Card({ m, i }: { m: (typeof modalidades)[number]; i: number }) {
         alt={m.title}
         label={`Foto: ${m.title}`}
         className="h-[32svh] w-full md:h-[38svh]"
+        sizes="(min-width: 1024px) 34vw, (min-width: 640px) 60vw, 82vw"
         imgClassName="transition-transform duration-700 ease-[var(--ease-plate)] group-hover:scale-105"
       />
       <div className="flex flex-1 flex-col gap-3 p-6 md:p-8">

@@ -17,24 +17,46 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: `${site.name} | Academia em Araguari`,
   description: site.description,
+  applicationName: site.name,
+  keywords: [
+    "academia Araguari",
+    "Body Club",
+    "musculação Araguari",
+    "circuito funcional",
+    "personal trainer Araguari",
+    "Wellhub Araguari",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
     title: `${site.name} | ${site.tagline}`,
     description: site.description,
+    url: "/",
+    siteName: site.name,
     locale: "pt_BR",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} | ${site.tagline}`,
+    description: site.description,
+  },
+  formatDetection: { telephone: false },
 };
 
 export const viewport: Viewport = {
   themeColor: "#000000",
+  colorScheme: "dark",
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ExerciseGym",
   name: site.name,
+  url: site.url,
+  image: `${site.url}/opengraph-image.jpg`,
   telephone: "+55 34 99881-1315",
   email: site.email,
   address: {

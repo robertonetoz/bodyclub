@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 type PhotoProps = {
@@ -9,14 +10,17 @@ type PhotoProps = {
   label?: string;
   className?: string;
   imgClassName?: string;
+  /** Foto do topo: carrega antes de tudo */
   priority?: boolean;
+  /** Largura que a foto ocupa na tela, para baixar o tamanho certo (ex.: "50vw") */
+  sizes?: string;
   /** Classes extras para posicionar o aviso do espaço reservado */
   placeholderClassName?: string;
 };
 
 /**
- * Mostra a foto se o arquivo existir em /public; se não existir, mostra um
- * espaço reservado com o caminho onde a foto deve ser colocada.
+ * Mostra a foto (otimizada pelo next/image) se o arquivo existir em /public;
+ * se não existir, mostra um espaço reservado com o caminho onde colocá-la.
  */
 export function Photo({
   src,
@@ -25,6 +29,7 @@ export function Photo({
   className = "",
   imgClassName = "",
   priority,
+  sizes = "100vw",
   placeholderClassName = "items-center justify-center",
 }: PhotoProps) {
   const ref = useRef<HTMLImageElement>(null);
@@ -37,8 +42,8 @@ export function Photo({
   }, []);
 
   return (
-    <div className={`relative overflow-hidden ${className}`}>
-      {failed && (
+    <div className={`relative overflow-hidden bg-grafite ${className}`}>
+      {failed ? (
         <div className={`placeholder-stripes absolute inset-0 flex flex-col gap-2 p-4 text-center ${placeholderClassName}`}>
           <svg aria-hidden viewBox="0 0 24 24" className="size-7 text-body/70" fill="none" stroke="currentColor" strokeWidth="1.5">
             <rect x="3" y="5" width="18" height="14" rx="1" />
@@ -48,17 +53,18 @@ export function Photo({
           {label && <span className="text-sm font-medium text-giz/80">{label}</span>}
           <code className="max-w-full truncate text-[11px] text-aco">public{src}</code>
         </div>
+      ) : (
+        <Image
+          ref={ref}
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          {...(priority ? { preload: true } : { loading: "lazy" as const })}
+          onError={() => setFailed(true)}
+          className={`object-cover ${imgClassName}`}
+        />
       )}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        ref={ref}
-        src={src}
-        alt={alt}
-        loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : undefined}
-        onError={() => setFailed(true)}
-        className={`absolute inset-0 size-full object-cover ${failed ? "invisible" : ""} ${imgClassName}`}
-      />
     </div>
   );
 }

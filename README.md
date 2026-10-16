@@ -17,3 +17,8 @@ Abra http://localhost:3000.
 - **Fotos:** veja `public/images/LEIA-ME.md` (fachada do topo, galeria, posts do Instagram, modalidades)
 - **Cores e fontes:** `src/app/globals.css` (bloco `@theme`)
 - **Seções:** `src/components/` — a ordem fica em `src/app/page.tsx`
+
+## Prévia de link (WhatsApp, Instagram, Facebook)
+
+A imagem que aparece ao compartilhar o link é `src/app/opengraph-image.jpg` (1200×630).
+O endereço do site usado nas prévias fica em `site.url`, em `src/data/site.ts` — troque quando tiver domínio próprio.

@@ -88,6 +88,7 @@ function Tile({ item, onOpen, className = "" }: { item: Item; onOpen: (i: number
         alt={item.alt}
         label={`Galeria ${item.index + 1}`}
         className={`w-full ${tall ? "aspect-[3/4]" : "aspect-square"}`}
+        sizes="(min-width: 768px) 33vw, 50vw"
         imgClassName="transition-transform duration-700 ease-[var(--ease-plate)] group-hover:scale-[1.06]"
       />
       <span className="pointer-events-none absolute inset-0 bg-body/0 mix-blend-multiply transition-colors duration-500 group-hover:bg-body/25" />
