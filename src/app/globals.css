@@ -1,0 +1,81 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@theme {
+  --color-ferro: #000000;
+  --color-grafite: #1a1916;
+  --color-chumbo: #2a2925;
+  --color-aco: #8f8c83;
+  --color-giz: #efece3;
+  --color-body: #ffd200;
+  --color-body-escuro: #d9b200;
+
+  --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+
+  --ease-plate: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  background: var(--color-ferro);
+  color: var(--color-giz);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-ferro);
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-body);
+  color: var(--color-ferro);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-body);
+  outline-offset: 3px;
+}
+
+/* Títulos: o peso e a largura do logo */
+.display {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 72;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.86;
+  letter-spacing: -0.005em;
+}
+
+/* Padrão listrado dos espaços reservados para fotos */
+.placeholder-stripes {
+  background-color: var(--color-grafite);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 14px,
+    rgb(255 210 0 / 0.06) 14px 15px
+  );
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
